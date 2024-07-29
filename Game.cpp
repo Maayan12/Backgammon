@@ -3,6 +3,7 @@
 /*
 Function initializes the board of the white pieces
 */
+
 void Game::initWhiteBoard()
 {
 	int i = 0;
@@ -59,4 +60,68 @@ int Game::rollDice()
 	std::uniform_int_distribution<> dis(1, 6);
 
 	return dis(gen);
+}
+
+void Game::printBoard()
+{
+	const std::string reset = "\033[0m";
+	const std::string cyan = "\033[36m";
+	const std::string bright_yellow = "\033[93m";
+
+	int i = 0;
+
+	std::cout << "====================================================" << std::endl;
+	std::cout << "||";
+	for (i = BOARD_SIZE - 1; i >= BOARD_SIZE / 2; i--)
+	{
+		if (i == BOARD_SIZE / 4 * 3 - 1)
+		{
+			std::cout << "|";
+		}
+		if (this->_whitePieces[i] != 0)
+		{
+			std::cout << " " << bright_yellow << _whitePieces[i] << reset << " |";
+		}
+		else if (this->_blackPieces[i] != 0)
+		{
+			std::cout << " " << cyan << _blackPieces[i] << reset << " |";
+		}
+		else
+		{
+			std::cout << "   |";
+		}
+	}
+	std::cout << "|" << std::endl;
+	std::cout << "||   |   |   |   |   |   ||   |   |   |   |   |   ||" << std::endl;
+	std::cout << "||                       ||                       ||" << std::endl;
+	std::cout << "||                       ||                       ||" << std::endl;
+	std::cout << "||                       ||                       ||" << std::endl;
+	std::cout << "||                       ||                       ||" << std::endl;
+	std::cout << "||                       ||                       ||" << std::endl;
+	std::cout << "||                       ||                       ||" << std::endl;
+	std::cout << "||                       ||                       ||" << std::endl;
+	std::cout << "||                       ||                       ||" << std::endl;
+	std::cout << "||   |   |   |   |   |   ||   |   |   |   |   |   ||" << std::endl;
+	std::cout << "||";
+	for (i = 0; i < BOARD_SIZE / 2; i++)
+	{
+		if (i == BOARD_SIZE / 4)
+		{
+			std::cout << "|";
+		}
+		if (this->_whitePieces[i] != 0)
+		{
+			std::cout << " " << bright_yellow << _whitePieces[i] << reset << " |";
+		}
+		else if (this->_blackPieces[i] != 0)
+		{
+			std::cout << " " << cyan << _blackPieces[i] << reset << " |";
+		}
+		else
+		{
+			std::cout << "   |";
+		}
+	}
+	std::cout << "|" << std::endl;
+	std::cout << "====================================================" << std::endl;
 }
